@@ -3,3 +3,4 @@ rapidfuzz
 flask
 Flask
 flask-cors
+gunicorn
