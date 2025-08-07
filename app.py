@@ -142,13 +142,15 @@ def reload_route():
 from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_folder='static')
+CORS(app)
 
+# Serve index.html from /static folder
 @app.route("/")
-def index():
-    return send_from_directory('static', 'index.html')
-
+def serve_ui():
+    return send_from_directory(app.static_folder, "index.html")
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
+
 
 
