@@ -145,12 +145,14 @@ app = Flask(__name__, static_folder='static')
 CORS(app)
 
 # Serve index.html from /static folder
-@app.route("/")
-def serve_ui():
-    return send_from_directory(app.static_folder, "index.html")
+    @app.route("/favicon.ico")
+def favicon():
+    return send_from_directory(app.static_folder, "favicon.ico")
+
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
+
 
 
 
