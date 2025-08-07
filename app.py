@@ -139,17 +139,16 @@ def reload_route():
     return jsonify({"ok": True})
 
 # Serve the HTML UI
+from flask import Flask, send_from_directory
+
+app = Flask(__name__, static_folder='static')
+
 @app.route("/")
-def serve_ui():
-    return send_from_directory(app.static_folder, "index.html")
+def index():
+    return send_from_directory('static', 'index.html')
+
 
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
 
-from flask import Flask, render_template
 
-app = Flask(__name__)
-
-@app.route("/")
-def index():
-    return render_template("index.html")
